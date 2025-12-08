@@ -1,0 +1,31 @@
+<div class="bg-white p-6 rounded-2xl shadow border space-y-4">
+  <h2 class="text-xl font-semibold"><%= Contract::STATE_TRANSLATIONS[contract.state] %></h2>
+
+  <p class="text-gray-700">
+    Заемщик должет совершить изначальный депозит в эскроу.
+  </p>
+
+  <div class="space-y-2 text-gray-800">
+    <p>
+      <span class="font-medium">Адрес эскроу:</span>
+      <%= contract.escrow.address %>
+    </p>
+
+    <p>
+      <span class="font-medium">Объем начального депозита (BTC):</span>
+      <%= format('%.8f', contract.initial_depopsit_volume) %>
+    </p>
+
+    <p>
+      <span class="font-medium">Текущий объем (BTC):</span>
+      <%= format('%.8f', contract.current_escrow_volume) %>
+    </p>
+  </div>
+
+  <div class="mt-4">
+    <%= button_to "Проверить депозит",
+          check_deposit_contract_path(contract),
+          method: :post,
+          class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl" %>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="max-w-lg mx-auto mt-10 bg-white p-6 rounded-2xl shadow">
+  <h1 class="text-2xl font-semibold mb-6 text-center">Создать предложение</h1>
+
+  <%= form_with model: @offer, class: "space-y-6" do |f| %>
+
+    <div>
+      <%= f.label :payment_method, 'Платежный метод', class: "block text-sm font-medium mb-1" %>
+      <%= f.text_field :payment_method,
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% @offer.errors.full_messages_for(:payment_method).each do |msg| %>
+        <p class="text-red-600 text-sm mt-1"><%= msg %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :value, 'Сумма', class: "block text-sm font-medium mb-1" %>
+      <%= f.number_field :value, step: "0.01",
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% @offer.errors.full_messages_for(:value).each do |msg| %>
+        <p class="text-red-600 text-sm mt-1"><%= msg %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :ltv_percent, "LTV (%)", class: "block text-sm font-medium mb-1" %>
+      <%= f.number_field :ltv_percent,
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% @offer.errors.full_messages_for(:ltv_percent).each do |msg| %>
+        <p class="text-red-600 text-sm mt-1"><%= msg %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :interest_percent, "Процент", class: "block text-sm font-medium mb-1" %>
+      <%= f.number_field :interest_percent,
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% @offer.errors.full_messages_for(:interest_percent).each do |msg| %>
+        <p class="text-red-600 text-sm mt-1"><%= msg %></p>
+      <% end %>
+    </div>
+
+    <%= f.submit "Создать предложений",
+          class: "w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl font-medium" %>
+
+  <% end %>
+</div>

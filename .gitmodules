@@ -1,0 +1,3 @@
+[submodule "vendor/coin_crypto"]
+	path = vendor/coin_crypto
+	url = git@github.com:emfy0/coincrypto.git

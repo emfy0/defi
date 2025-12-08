@@ -1,0 +1,27 @@
+<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-2xl shadow">
+  <h1 class="text-2xl font-semibold mb-6 text-center">Зарегистрируйтесь</h1>
+
+  <%= form_with model: @user, url: users_path, class: "space-y-5" do |f| %>
+    <div>
+      <%= f.label :username, 'Логин', class: "block text-sm font-medium mb-1" %>
+      <%= f.text_field :username,
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% if @user.errors[:username].any? %>
+        <p class="text-red-600 text-sm mt-1"><%= @user.errors[:username].first %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :password, 'Пароль', class: "block text-sm font-medium mb-1" %>
+      <%= f.password_field :password,
+            class: "w-full p-2 border rounded-lg focus:ring focus:outline-none" %>
+      <% if @user.errors[:password].any? %>
+        <p class="text-red-600 text-sm mt-1"><%= @user.errors[:password].first %></p>
+      <% end %>
+    </div>
+
+    <%= f.submit "Зарегистрироваться",
+          class: "w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl font-medium" %>
+
+  <% end %>
+</div>

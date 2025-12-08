@@ -1,0 +1,21 @@
+<div class="bg-white p-6 rounded-2xl shadow border space-y-6">
+  <h2 class="text-xl font-semibold"><%= Contract::STATE_TRANSLATIONS[contract.state] %></h2>
+
+  <p class="text-gray-700">
+    Контракт активен, завершите его, когда будет возвращена вся сумма кредита, подписав транзакцию вывода.
+  </p>
+
+  <% signatures = %i[lender borrower akh] %>
+  <% translations = { lender: "Кредитор", borrower: "Заемщик", akh: "Арбитер" } %>
+
+  <p class="text-gray-700">
+    Контракт подписан: <%= signatures.map { |sig| "#{translations[sig]} => #{contract["psbt_#{sig}_hex"].present? ? "да" : "нет"}" }.join(", ") %>
+  </p>
+
+  <div>
+    <%= button_to "Подписать транзакцию вывода",
+          sign_release_contract_path(contract),
+          method: :post,
+          class: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl" %>
+  </div>
+</div>

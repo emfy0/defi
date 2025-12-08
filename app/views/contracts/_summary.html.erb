@@ -1,0 +1,73 @@
+<div class="bg-white p-6 rounded-2xl shadow border">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+    <p>
+      <span class="font-medium">Кредитор:</span>
+      <%= contract.lender.username %>
+    </p>
+
+    <p>
+      <span class="font-medium">Заемщик:</span>
+      <%= contract.borrower.username %>
+    </p>
+
+    <p>
+      <span class="font-medium">Сумма:</span>
+      <%= number_to_currency(contract.value) %>
+    </p>
+
+    <p>
+      <span class="font-medium">Процент:</span>
+      <%= contract.interest_percent %>%
+    </p>
+
+    <p>
+      <span class="font-medium">LTV:</span>
+      <%= contract.ltv_percent %>%
+    </p>
+
+    <p>
+      <span class="font-medium">Сумма процентов:</span>
+      <%= number_to_currency(contract.interest_value) %>
+    </p>
+
+    <p>
+      <span class="font-medium">Валюта:</span>
+      <%= contract.currency %>
+    </p>
+
+    <p>
+      <span class="font-medium">Текущая сумма на эскроу в (BTC):</span>
+      <%= contract.current_escrow_volume %>
+    </p>
+
+    <p>
+      <span class="font-medium">Текущая сумма на эскроу в (<%= contract.currency %>):</span>
+      <%= contract.current_escrow_value %>
+    </p>
+  </div>
+
+  <p class="py-4">
+    <span class="font-medium">Способ оплаты:</span>
+    <%= contract.repayment_method %>
+  </p>
+
+  <p class="py-0">
+    <span class="font-medium">Адрес эскроу:</span>
+    <%= contract.escrow.address %>
+  </p>
+
+  <p class="py-4">
+    <span class="font-medium">Публичные ключи:</span>
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 text-gray-700">
+    <div class="space-y-2 text-gray-800">
+      <p>
+        Заемщик: <%= contract.borrower_public_key_hex %>
+        Кредитор: <%= contract.lender_public_key_hex %>
+        Платформа: <%= contract.plafrom_public_key_hex %>
+        Арбитер: <%= contract.akh_public_key_hex %>
+      </p>
+    </div>
+  </div>
+</div>
