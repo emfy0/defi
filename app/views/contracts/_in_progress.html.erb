@@ -6,7 +6,7 @@
   </p>
 
   <% signatures = %i[lender borrower akh] %>
-  <% translations = { lender: "Кредитор", borrower: "Заемщик", akh: "Арбитер" } %>
+  <% translations = { lender: "Кредитор", borrower: "Заемщик", akh: "Арбитр" } %>
 
   <p class="text-gray-700">
     Контракт подписан: <%= signatures.map { |sig| "#{translations[sig]} => #{contract["psbt_#{sig}_hex"].present? ? "да" : "нет"}" }.join(", ") %>
